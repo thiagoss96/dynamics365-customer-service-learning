@@ -147,6 +147,6 @@ Também é possível estender o fluxo para **enviar a planilha por e-mail**, jun
 ---
 
 ## Links úteis (para inclusão no repositório)
-- Imagem do fluxo (exemplo): `../imagens/fluxo-power-automate.png`  
-- Imagem da planilha gerada (exemplo): `../imagens/planilha-reunioes.png`
+- Imagem do fluxo (exemplo):![fluxo](../imagens/Imagem-fluxo-01.png
+- Imagem da planilha (exemplo):![planilha](../imagens/Imagem-planilha-01.png
 
