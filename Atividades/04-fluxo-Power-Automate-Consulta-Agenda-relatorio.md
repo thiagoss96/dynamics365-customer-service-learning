@@ -55,7 +55,7 @@ formatDateTime(addHours(startOfDay(utcNow()), 22), 'yyyy-MM-ddTHH:mm:ssZ')
 - Valor: *(vazio)*
 
 **4ª Variável – Inicializar variável**  
-- Nome: `ListaParticipantesArray`  
+- Nome: `ListaParticipantes`  
 - Tipo: Matriz  
 - Valor: *(vazio)*
 
@@ -74,7 +74,7 @@ Dentro do "Aplicar a cada":
 concat(items('Aplicar_a_cada')?['requiredAttendees'], items('Aplicar_a_cada')?['optionalAttendees'])
 ```
 
-**Definir variável – ListaParticipantesArray**  
+**Definir variável – ListaParticipantes**  
 ```text
 split(variables('ListaParticipantesString'), ';')
 ```
