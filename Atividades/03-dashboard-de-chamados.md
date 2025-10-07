@@ -39,3 +39,9 @@ Criar um **dashboard no Dynamics 365 Customer Service** para monitorar e analisa
 - Visualização e análise de **chamados e ocorrências secundárias**  
 - Aplicação prática de filtros por **responsável, sistema, solicitante e status**
 
+## Visual dos Dashboards Power BI incorporados no Customer Service
+
+![Dashboards Power BI](../imagens/dashboard-ocorrências-01.png)
+
+
+## Filtros Aplicados
