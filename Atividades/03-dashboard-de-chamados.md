@@ -41,12 +41,15 @@ Criar um **dashboard no Dynamics 365 Customer Service** para monitorar e analisa
 
 ## Visuais Power BI incorporados ao app de negócio Customer Service
 
+
+### Ocorrências Primárias
 ![Ocorrências Primárias](../imagens/dashboard-ocorrências-01.png)
 ![Ocorrências Primárias](../imagens/dashboard-ocorrências-02.png)
+
+### Ocorrências Sencudárias
 ![Ocorrências Secundárias](../imagens/dashboard-ocorrências-secundaria-01.png)
+
+### Ocorrências Resolvidas
 ![Ocorrências Resolvidas](../imagens/dashboard-ocorrências-resolvidas-01.png)
 ![Ocorrências Resolvidas](../imagens/dashboard-ocorrências-resolvidas-02.png)
 ![Ocorrências Resolvidas](../imagens/dashboard-ocorrências-resolvidas-03.png)
-
-
-## Filtros Aplicados
