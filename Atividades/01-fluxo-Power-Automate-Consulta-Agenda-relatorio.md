@@ -7,16 +7,9 @@ O fluxo consulta o **calendário do Outlook** de um usuário, obtém todas as **
 
 Esse documento descreve a solução, o gatilho, variáveis, ações, expressões e considerações práticas para inclusão no seu repositório do GitHub.
 
+A planilha Excel é composta por colunas como: **Assunto (reunião), Início, Término e Participante**.  
 
-# 04 - Fluxo de Aprovação Power Automate
-
-Nesse caso, o que fizemos foi um **fluxo agendado** que disparava todos os dias às 18h e consultava a agenda Outlook de um usuário, visualizando todas as reuniões do dia e colocando, por linha, cada usuário participante em uma planilha Excel.  
-
-A planilha Excel era composta por colunas como: **Assunto (reunião), Início, Término e Participante**.  
-
-Ou seja, se havia 6 participantes em uma reunião, ele inseria **um participante por linha**, repetindo as informações de **Assunto, Início e Término**.  
-
-Quando uma nova reunião era adicionada, o fluxo seguia o mesmo padrão de input de informações e parametrização.
+Ou seja, se havia 6 participantes em uma reunião, será inserido **um participante por linha**, repetindo as informações de **Assunto, Início e Término**.  
 
 ---
 
