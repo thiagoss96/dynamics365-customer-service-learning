@@ -184,8 +184,3 @@ Se desejar enviar a planilha ao final do processo, adicione os passos abaixo **a
 - Imagem do fluxo (exemplo): `../imagens/fluxo-power-automate.png`  
 - Imagem da planilha gerada (exemplo): `../imagens/planilha-reunioes.png`
 
----
-
-## Exemplo final do arquivo
-Guarde este conteúdo como **`04-fluxo-aprovacao-power-automate.md`** na pasta `atividades/` do seu repositório.
-
