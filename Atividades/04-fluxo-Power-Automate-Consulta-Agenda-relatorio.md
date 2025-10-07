@@ -7,153 +7,121 @@ O fluxo consulta o **calendário do Outlook** de um usuário, obtém todas as **
 
 Esse documento descreve a solução, o gatilho, variáveis, ações, expressões e considerações práticas para inclusão no seu repositório do GitHub.
 
----
 
-## Título do arquivo sugerido
-`04-fluxo-aprovacao-power-automate.md`
+# 04 - Fluxo de Aprovação Power Automate
 
----
+Nesse caso, o que fizemos foi um **fluxo agendado** que disparava todos os dias às 18h e consultava a agenda Outlook de um usuário, visualizando todas as reuniões do dia e colocando, por linha, cada usuário participante em uma planilha Excel.  
 
-## Cenário e Objetivo
+A planilha Excel era composta por colunas como: **Assunto (reunião), Início, Término e Participante**.  
 
-**Cenário:** era necessário gerar um relatório diário com todas as reuniões realizadas por um usuário do Outlook, detalhando cada participante em linhas separadas para facilitar controle e análises.  
-**Objetivo:** automatizar a captura das reuniões do dia e gravar os dados em uma planilha Excel, com opção de enviar a planilha por e‑mail ao final do processo.
+Ou seja, se havia 6 participantes em uma reunião, ele inseria **um participante por linha**, repetindo as informações de **Assunto, Início e Término**.  
 
----
-
-## Gatilho (Trigger)
-
-- **Tipo:** Recorrência (`Recurrence`)
-- **Configuração:**
-  - Intervalo: `1`
-  - Unidade: `Day`
-  - Fuso horário: `UTC -03:00` (E. South America Standard Time / Brasília)
-  - Horário de disparo: `18:00`
-
-Exemplo de configuração no Power Automate: use o gatilho **Recurrence** com as propriedades acima.
+Quando uma nova reunião era adicionada, o fluxo seguia o mesmo padrão de input de informações e parametrização.
 
 ---
 
-## Variáveis iniciais
+## Solução Criada
 
-Crie as variáveis necessárias logo após o gatilho.
+**Recorrência (Recurrence)**
+- Intervalo: 1  
+- Frequência: Dia  
+- Fuso Horário: UTC -03h00 (Brasília)  
+- Horário de disparo: 18:00  
 
-1. **Variável:** `InicioJanela`  
-   - **Tipo:** String  
-   - **Valor (expressão):**
+**1ª Variável – Inicializar variável**  
+- Nome: `InicioJanela`  
+- Tipo: Cadeia de Caracteres  
+- Valor:  
 ```text
 formatDateTime(addHours(startOfDay(utcNow()), 6), 'yyyy-MM-ddTHH:mm:ssZ')
-```  
-   - **Descrição:** define o início da janela (06:00 do dia atual em UTC Z format usado pelo conector).
+```
 
-2. **Variável:** `FimJanela`  
-   - **Tipo:** String  
-   - **Valor (expressão):**
+**2ª Variável – Inicializar variável**  
+- Nome: `FimJanela`  
+- Tipo: Cadeia de Caracteres  
+- Valor:  
 ```text
 formatDateTime(addHours(startOfDay(utcNow()), 22), 'yyyy-MM-ddTHH:mm:ssZ')
+```
+
+**Novo Step – Obter o modo de exibição Calendário de eventos (V3)**  
+- ID do calendário: `Calendar`  
+- Hora de Início: `@{variables('InicioJanela')}`  
+- Hora de Término: `@{variables('FimJanela')}`
+
+**3ª Variável – Inicializar variável**  
+- Nome: `ListaParticipantesString`  
+- Tipo: Cadeia de Caracteres  
+- Valor: *(vazio)*
+
+**4ª Variável – Inicializar variável**  
+- Nome: `ListaParticipantesArray`  
+- Tipo: Matriz  
+- Valor: *(vazio)*
+
+---
+
+**Novo Step – Aplicar a cada**  
+- Selecionar saída das etapas anteriores:  
+```text
+@{outputs('Obter_o_modo_de_exibição_Calendário_de_eventos_(V3)')?['body/value']}
+```
+
+Dentro do "Aplicar a cada":  
+
+**Definir variável – ListaParticipanteString**  
+```text
+concat(items('Aplicar_a_cada')?['requiredAttendees'], items('Aplicar_a_cada')?['optionalAttendees'])
+```
+
+**Definir variável – ListaParticipantesArray**  
+```text
+split(variables('ListaParticipantesString'), ';')
+```
+
+Dentro do aplicar a cada, **inserir um novo "Aplicar a cada 2"** (apply_to_each2) e dentro dele:
+
+**Ação – Adicionar uma linha em uma tabela (Excel Online Business)**  
+- Localização: OneDrive for Business  
+- Biblioteca de Documentos: Documentos  
+- Arquivo: `/pasta/selecionarsuaplanilha.xlsx`  
+- Tabela: `Tabela1` *(verificar se é a tabela correta caso haja mais de uma)*  
+
+**Parâmetros avançados:**  
+- Assunto: `@{items('Aplicar_a_cada')?['subject']}`  
+- Início:  
+```text
+formatDateTime(convertTimeZone(items('Aplicar_a_cada')?['Start'],'UTC','E. South America Standard Time'),'yyyy/MM/dd HH:mm:ss')
 ```  
-   - **Descrição:** define o fim da janela (22:00 do dia atual).
-
-3. **Variável:** `ListaParticipantes`  
-   - **Tipo:** String  
-   - **Valor inicial:** string vazia (`""`)  
-   - **Descrição:** será usada para montar a lista de participantes de cada reunião (concatenando required e optional attendees).
+- Término:  
+```text
+formatDateTime(convertTimeZone(items('Aplicar_a_cada')?['end'],'UTC','E. South America Standard Time'),'yyyy/MM/dd HH:mm:ss')
+```  
+- Participantes: `@{items('Aplicar_a_cada_2')}`
 
 ---
 
-## Ações principais
+O fluxo foi criado com sucesso e **as informações são capturadas para a planilha diariamente às 18h00 (BRT)**.  
 
-### 1) Obter eventos do calendário (Outlook V3)
+Também é possível estender o fluxo para **enviar a planilha por e-mail**, juntamente com o anexo.
 
-- **Ação:** **Get calendar view of events (V3)** / *Obter o modo de exibição Calendário de eventos (V3)*  
-- **Conector:** Office 365 Outlook  
-- **Parâmetros:**
-  - **Calendar id:** `Calendar` (ou o id do calendário desejado)
-  - **Start time:** `@{variables('InicioJanela')}`
-  - **End time:** `@{variables('FimJanela')}`
+**Passos adicionais para envio de e-mail:**
 
-Esta ação retorna uma lista de eventos no período definido. A saída principal que vamos iterar é:  
-```text
-@outputs('Obter_o_modo_de_exibição_Calendário_de_eventos_(V3)')?['body/value']
-```
+1. **Obter conteúdo de arquivo – OneDrive for Business**  
+- Arquivo: `/pasta/selecionarsuaplanilha.xlsx`  
+- Inferir Tipo de Conteúdo: Sim
 
-### 2) Loop: Aplicar a cada (Apply to each)
+2. **Enviar um e-mail (V2) – Office 365 Outlook**  
+- Para: seu usuário (e-mail)  
+- Assunto: `Relatório de Reuniões`  
+- Corpo: `Segue em anexo relatório de reuniões.`  
 
-- **Ação:** `Apply to each` (Aplicar a cada)  
-- **Entrada:** saída do passo anterior (lista de eventos).
-
-Dentro do loop, executar as seguintes sub‑ações para cada evento:
-
-#### 2.1) Montar/concatenar lista de participantes
-- **Ação:** `Append to string variable` (Acrescentar à variável)
-- **Variável:** `ListaParticipantes`
-- **Valor (expressão):**
-```text
-concat(
-  replace(coalesce(items('Apply_to_each')?['requiredAttendees'], ''), ';', ', '),
-  if(
-    and(
-      not(empty(items('Apply_to_each')?['optionalAttendees'])),
-      not(empty(items('Apply_to_each')?['requiredAttendees']))
-    ),
-    ', ',
-    ''
-  ),
-  replace(coalesce(items('Apply_to_each')?['optionalAttendees'], ''), ';', ', ')
-)
-```
-> Observação: no designer em PT/BR os nomes dos passos podem ficar com espaços/acentos — ajuste `items('Apply_to_each')` para o nome exato do passo conforme o seu fluxo (ex: `items('Aplicar_a_cada')`).
-
-Essa expressão junta os participantes obrigatórios (`requiredAttendees`) e opcionais (`optionalAttendees`), substitui `;` por `, ` e garante a separação correta quando ambos existem.
-
-#### 2.2) Adicionar linha na tabela do Excel (Excel Online - Business)
-- **Ação:** `Add a row into a table` (Adicionar uma linha em uma tabela)  
-- **Conector:** Excel Online (Business)  
-- **Configuração:**
-  - **Location:** OneDrive for Business  
-  - **Document Library:** Documentos  
-  - **File:** `/pasta/seu_arquivo.xlsx` (caminho no OneDrive)
-  - **Table:** `Tabela1` (nome da tabela dentro do arquivo; a planilha precisa estar formatada como Tabela)
-
-**Mapeamento de colunas (exemplos):**
-- `Assunto` : `@{items('Apply_to_each')?['subject']}`
-- `Inicio`  :  
-```text
-formatDateTime(convertTimeZone(items('Apply_to_each')?['start'],'UTC','E. South America Standard Time'),'yyyy/MM/dd HH:mm:ss')
-```
-- `Termino` :  
-```text
-formatDateTime(convertTimeZone(items('Apply_to_each')?['end'],'UTC','E. South America Standard Time'),'yyyy/MM/dd HH:mm:ss')
-```
-- `Participante` : `@{variables('ListaParticipantes')}`
-
-> Importante: se você quer inserir **uma linha por participante** (cada participante em uma linha separada), você precisa ajustar a lógica: em vez de concatenar todos os participantes em uma única string e inserir uma linha, percorra a lista de participantes individualmente e insira uma linha para cada participante. O documento original concatenava e inseria a string completa; se o comportamento desejado é uma linha por participante, será necessário dividir a string e iterar sobre ela.
-
----
-
-## Etapa Opcional: enviar a planilha por e‑mail
-
-Se desejar enviar a planilha ao final do processo, adicione os passos abaixo **após** o loop principal:
-
-### 3) Obter conteúdo do arquivo (OneDrive for Business)
-- **Ação:** `Get file content` / `Obter conteúdo de arquivo`  
-- **Conector:** OneDrive for Business  
-- **File:** `/pasta/seu_arquivo.xlsx`  
-- **Infer content type:** `Yes` (Inferir tipo de conteúdo: Sim)
-
-### 4) Enviar um e‑mail (Office 365 Outlook - V2)
-- **Ação:** `Send an email (V2)` / `Enviar um e‑mail (V2)`  
-- **Conector:** Office 365 Outlook  
-- **Configurações principais:**
-  - **To:** `seu.email@dominio.com` (ou endereço do destinatário)
-  - **Subject:** `Relatório de Reuniões`
-  - **Body:** `Segue em anexo o relatório de reuniões do dia.`
-- **Anexo (parâmetro avançado):** use o conteúdo obtido no passo anterior:
+**Anexo:**  
 ```json
 [
   {
-    "Name": "relatorio_reunioes.xlsx",
-    "ContentBytes": @{body('Get_file_content')}
+    "Name": "suaplanilha.xlsx",
+    "ContentBytes": "<conteúdo do arquivo>"
   }
 ]
 ```
@@ -176,8 +144,6 @@ Se desejar enviar a planilha ao final do processo, adicione os passos abaixo **a
 - **Fuso horário:** usar `convertTimeZone` para normalizar horários; o exemplo usa `E. South America Standard Time`. Ajuste se necessário.  
 - **Tratamento de erros:** adicione blocos de tratamento (Configure run after / Try/Catch pattern) para capturar falhas no acesso ao OneDrive ou Outlook.  
 - **Auditoria:** considere gravar em outra tabela/arquivo um log de execução (data/hora e número de registros inseridos).  
-- **Performance:** para grande volume de eventos/participantes, avalie limites do conector Excel (throttling) e considere usar armazenamento intermediário (SharePoint list ou Azure Table) se necessário.
-
 ---
 
 ## Links úteis (para inclusão no repositório)
