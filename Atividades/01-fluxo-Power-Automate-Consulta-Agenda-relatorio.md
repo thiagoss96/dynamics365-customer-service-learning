@@ -148,8 +148,8 @@ Também é possível estender o fluxo para **enviar a planilha por e-mail**, jun
 
 # Links úteis (para inclusão no repositório)
 ## Imagem do fluxo 
-![fluxo](../imagens/imagem-fluxo-01.png)
+![fluxo](../imagens/Imagem-fluxo-01.png)
 
 ##Imagem da planilha 
-![fluxo](../imagens/imagem-planilha-01.png)
+![fluxo](../imagens/Imagem-planilha-01.png)
 
