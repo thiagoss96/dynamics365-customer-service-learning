@@ -151,7 +151,7 @@ Também é possível estender o fluxo para **enviar a planilha por e-mail**, jun
 ![fluxo](../imagens/Imagem-fluxo-01.png)
 
 ## Imagem de execuções realizadas
-![Execuções](../imagens/Imagem-execuções-01.png)
+![Execuções](../imagens/Imagem-Execuções-01.png)
 
 ##Imagem da planilha 
 ![planilha](../imagens/Imagem-planilha-01.png)
