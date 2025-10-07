@@ -146,7 +146,10 @@ Também é possível estender o fluxo para **enviar a planilha por e-mail**, jun
 - **Auditoria:** considere gravar em outra tabela/arquivo um log de execução (data/hora e número de registros inseridos).  
 ---
 
-## Links úteis (para inclusão no repositório)
-- Imagem do fluxo (exemplo):![fluxo](../imagens/Imagem-fluxo-01.png
-- Imagem da planilha (exemplo):![planilha](../imagens/Imagem-planilha-01.png
+# Links úteis (para inclusão no repositório)
+## Imagem do fluxo 
+![fluxo](../imagens/imagem-fluxo-01.png)
+
+##Imagem da planilha 
+![fluxo](../imagens/imagem-planilha-01.png)
 
