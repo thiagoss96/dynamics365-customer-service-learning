@@ -23,16 +23,15 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
     <attribute name="accountid" />
     <attribute name="accountnumber" />
     <attribute name="ownerid" />
-    <attribute name="CNPJ_CPF" />
+    <attribute name="CNPJ_CPF" /> --- ---- deve verificar no banco o NOME LÓGICO DO campo cnpj/cpf
     <filter type="or">
-      <condition attribute="CNPJ_CPF" operator="eq" value="12345678000190" />
-      <condition attribute="CNPJ_CPF" operator="eq" value="45987321000110" />
-      <condition attribute="CNPJ_CPF" operator="eq" value="03222555000177" />
-      <condition attribute="CNPJ_CPF" operator="eq" value="09876543000122" />
-      <condition attribute="CNPJ_CPF" operator="eq" value="71102330000108" />
+      <condition attribute="CNPJ_CPF" operator="eq" value="COLAR_AQUI_CNPJ_OU_CPF" />
     </filter>
   </entity>
 </fetch>
+
+
+
 # 🧠 Explicação Técnica
 
 ## 1. Cabeçalho do Fetch
@@ -53,7 +52,7 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
 <attribute name="accountid" />
 <attribute name="accountnumber" />
 <attribute name="ownerid" />
-<attribute name="CNPJ_CPF" />
+<attribute name="CNPJ_CPF" /> ---- deve verificar no banco o NOME LÓGICO DO campo cnpj/cpf
 ```
 
 ## 📊 **Campos que serão retornados na consulta:**
@@ -76,11 +75,9 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
 
 ```xml
 <filter type="or">
-  <condition attribute="CNPJ_CPF" operator="eq" value="12345678000190" />
-  <condition attribute="CNPJ_CPF" operator="eq" value="45987321000110" />
-  <condition attribute="CNPJ_CPF" operator="eq" value="03222555000177" />
-  <condition attribute="CNPJ_CPF" operator="eq" value="09876543000122" />
-  <condition attribute="CNPJ_CPF" operator="eq" value="71102330000108" />
+  <condition attribute="CNPJ_CPF" operator="eq" value="COLAR_AQUI_CNPJ_OU_CPF" />
+  <condition attribute="CNPJ_CPF" operator="eq" value="COLAR_AQUI_CNPJ_OU_CPF" />
+
 </filter>
 ```
 
@@ -90,11 +87,9 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
 
 ### 📋 Condições Aplicadas:
 
-1. **CNPJ:** `12345678000190`
-2. **CNPJ:** `45987321000110` 
-3. **CNPJ:** `03222555000177`
-4. **CNPJ:** `09876543000122`
-5. **CNPJ:** `71102330000108`
+1. **CNPJ:** `COLAR_AQUI_CNPJ_OU_CPF`
+2. **CNPJ:** `COLAR_AQUI_CNPJ_OU_CPF` 
+
 
 ### ⚙️ **Especificações Técnicas:**
 - **Tipo de Filtro:** `OR`
@@ -110,11 +105,11 @@ Cada `<condition>` compara o valor do campo **`CNPJ_CPF`** com um número espec�
 
 **Fluxo lógico:**
 ```
-SE CNPJ_CPF = "12345678000190" OU
-SE CNPJ_CPF = "45987321000110" OU  
-SE CNPJ_CPF = "03222555000177" OU
-SE CNPJ_CPF = "09876543000122" OU
-SE CNPJ_CPF = "71102330000108"
+SE CNPJ_CPF = "COLAR_AQUI_CNPJ_OU_CPF1" OU
+SE CNPJ_CPF = "COLAR_AQUI_CNPJ_OU_CPF2" OU  
+SE CNPJ_CPF = "COLAR_AQUI_CNPJ_OU_CPF3" OU
+SE CNPJ_CPF = "COLAR_AQUI_CNPJ_OU_CPF4" OU
+SE CNPJ_CPF = "COLAR_AQUI_CNPJ_OU_CPF5"
 ENTÃO retorna registro
 ```
 
