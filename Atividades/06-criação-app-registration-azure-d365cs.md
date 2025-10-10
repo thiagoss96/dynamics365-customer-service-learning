@@ -41,5 +41,5 @@ O objetivo foi adequar a conexão ao **Exchange Online** utilizando a **autentic
 - Revisar periodicamente o grupo de segurança para manter a segurança e controle do fluxo de e-mails.
 
 ### Ocorrências Primárias
-![appregistration](imagens/imagens/azure-app-registration.jpg)
+![appregistration](..imagens/imagens/azure-app-registration.jpg)
 
