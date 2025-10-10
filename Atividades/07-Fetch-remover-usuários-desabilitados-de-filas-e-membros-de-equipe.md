@@ -11,7 +11,7 @@ Neste post, vou mostrar a forma prática de identificar esses usuários usando *
 
 Use o seguinte FetchXML para identificar usuários desativados e as filas em que ainda estão associados:
 
-```xml
+```sql
 <fetch>
   <entity name="queuemembership">
     <attribute name="queuemembershipid" />
