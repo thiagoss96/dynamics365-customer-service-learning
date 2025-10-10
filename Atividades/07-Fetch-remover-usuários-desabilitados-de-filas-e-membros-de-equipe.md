@@ -56,16 +56,54 @@ Use o seguinte FetchXML para identificar usuários desativados e as filas em que
 
 ---
 
-## 🔹 Passo 4: Próximos passos
+# 🧩 Passo 4: Gerando Comandos SQL para Limpeza de Usuários Desativados
 
-- Vou mostrar como **trabalhar com esses dados** e realizar a **limpeza em massa usando SQL para CDS**.  
-- Antes de qualquer exclusão, revise os usuários para evitar impactar operações ativas.  
-- Essa abordagem ajuda a manter **organização e governança** dentro do Dynamics 365 Customer Service.
+Você lembra da **planilha exportada no Bulk Data Updater**, com todos os dados de usuários?  
+Então — é nela que vamos trabalhar agora! Nosso objetivo é gerar os **comandos SQL prontos** para exclusão de usuários desativados das tabelas **team membership** e **queue membership** no **SQL 4 CDS**.
 
+---
 
+## 🧠 O que você vai precisar
 
-## 💡 Dicas finais
+- Planilha exportada com os **GUIDs dos usuários** (`systemuserid`)  
+- Acesso ao **SQL 4 CDS** (no XrmToolBox)  
+- Um pouco de **Excel** ou **Google Sheets** para montar as colunas de forma prática  
 
-- Sempre faça **testes com poucos registros** antes de executar a limpeza em massa.  
-- **Documente o processo** para controle e auditoria.  
-- Mantenha as **práticas recomendadas de segurança e governança** do Dynamics 365.
+---
+
+## 📊 Estrutura da planilha
+
+Crie uma nova aba (sheet) com as seguintes colunas:
+
+| Coluna | Conteúdo | Descrição |
+|:-------|:----------|:-----------|
+| **A** | GUID do usuário (`systemuserid`) | Obtido da FetchXML ou outra consulta |
+| **B** | `DELETE FROM teammembership WHERE teammembershipid = '` | Base do comando SQL |
+| **C** | `';` | Fechamento do comando |
+| **D** | Fórmula para concatenar A + B + C | Gera o comando completo |
+
+---
+
+## 🧮 Exemplo de concatenação
+
+No Excel ou Sheets, use uma fórmula semelhante a esta:
+
+```excel
+=B2 & A2 & C2
+```
+Isso resultará em comandos completos como:
+
+```sql
+DELETE FROM teammembership WHERE teammembershipid = 'GUID_DO_USUARIO1';
+```
+
+E também para a tabela de filas:
+
+```sql
+DELETE FROM queuemembership WHERE queuemembershipid = 'GUID_DO_USUARIO1';
+```
+
+## Visual da planilha
+
+![PlanilhaExcel](../imagens/planilhaexcel-concat.png)
+
