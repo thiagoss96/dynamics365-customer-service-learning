@@ -28,7 +28,7 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
     </filter>
   </entity>
 </fetch>
-
+```
 
 
 # 🧠 Explicação Técnica
@@ -44,7 +44,7 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
 | `mapping="logical"` | Usa os nomes lógicos dos atributos (não os exibidos na interface) |
 | `version="1.0"` | Versão do formato FetchXML |
 | `output-format="xml-platform"` | Formato de saída dos dados |
-
+```
 # 3. Atributos Retornados
 
 ```sql
