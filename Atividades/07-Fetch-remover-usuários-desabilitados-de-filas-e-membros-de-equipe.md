@@ -107,3 +107,87 @@ DELETE FROM queuemembership WHERE queuemembershipid = 'GUID_DO_USUARIO1';
 
 ![PlanilhaExcel](../imagens/planilhaexcel-concat.png)
 
+
+
+# � Passo 5: Limpeza na Entidade de Membros de Equipe (TeamMembership)
+
+## 📋 Entendendo a Entidade TeamMembership
+
+A entidade **TeamMembership** é responsável por armazenar a associação entre usuários e equipes no Dynamics 365. Cada registro representa um usuário que pertence a uma equipe específica.
+
+## 🔧 Processo de Limpeza no SQL 4 CDS
+
+### ** 1º: Preparação do Comando**
+
+```sql
+DELETE FROM teammembership WHERE teammembershipid = 'GUID_DO_USUARIO_AQUI';
+```
+
+### **2º: Execução no SQL 4 CDS**
+
+a. **Abra o SQL 4 CDS**
+   - Conecte-se ao ambiente desejado (HMLG ou PROD)
+   - Certifique-se de estar no banco de dados correto
+
+b. **Cole o Comando DELETE**
+   ```sql
+   DELETE FROM teammembership WHERE teammembershipid = 'GUID_DO_USUARIO_AQUI';
+   ```
+
+c. **Substitua o GUID**
+   - Substitua `'GUID_DO_USUARIO_AQUI'` pelo GUID real do usuário que precisa ser removido
+   - **Exemplo:**
+   ```sql
+   DELETE FROM teammembership WHERE teammembershipid = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890';
+   ```
+
+### **3º: Execução do Comando**
+
+d. **Execute o Comando**
+   - Clique no botão "Execute" ou pressione `F5`
+   - Aguarde a confirmação de execução
+
+e. **Verificação de Resultado**
+   - O sistema retornará uma mensagem indicando o número de registros afetados
+   - **Exemplo:** `"1 row affected"`
+
+### **4º: Confirmação da Limpeza**
+
+f. **Valide a Exclusão**
+   - Execute uma consulta para verificar se o registro foi removido:
+   ```sql
+   SELECT * FROM teammembership WHERE teammembershipid = 'GUID_DO_USUARIO_AQUI';
+   ```
+
+# Passo 6: Limpeza na Entidade de Membros de Filas (QueueMembership)
+
+## 📋 Comando para Exclusão
+
+```sql
+DELETE FROM queuemembership WHERE queuemembershipid = 'GUID_DO_USUARIO_AQUI';
+```
+
+## 🔧 Processo de Execução
+
+**Siga exatamente o mesmo passo a passo utilizado anteriormente para a entidade TeamMembership**, substituindo apenas o comando SQL pelo acima.
+
+## ⚠️ Observações Específicas
+
+- Certifique-se de que está usando o nome correto da entidade: `queuemembership`
+- Valide que o GUID corresponde a um registro válido na tabela de membros de filas
+- A exclusão removerá o usuário da associação com as filas
+
+## Visual do Select - SQL 4 CDS
+ 
+- ![teammembershipid](../imagens/teamembership-id-sql.png)
+- ![queuemembershipid](../queuemembership-id-sql.png)
+
+## ⚠️ Observações Importantes
+
+- 🔴 Esta ação é **irreversível**
+- 🔍 Certifique-se de que o GUID está correto antes de executar
+- 🧪 Recomenda-se executar primeiro em ambiente de homologação
+- 💾 Faça backup se necessário
+
+
+
