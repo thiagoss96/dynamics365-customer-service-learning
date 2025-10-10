@@ -16,7 +16,7 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
 
 ## 🧩 Estrutura do FetchXML
 
-```xml
+```sql
 <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
   <entity name="account">
     <attribute name="accountid" />
