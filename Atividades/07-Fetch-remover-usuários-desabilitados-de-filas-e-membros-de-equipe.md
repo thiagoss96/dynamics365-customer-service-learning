@@ -32,6 +32,7 @@ Use o seguinte FetchXML para identificar usuários desativados e as filas em que
     </link-entity>
   </entity>
 </fetch>
+```
 
 ## ✅ Passo 2: O que essa Fetch retorna
 
@@ -49,8 +50,9 @@ Use o seguinte FetchXML para identificar usuários desativados e as filas em que
 4. Clique em **Execute** ou **Run** para listar os registros.  
 5. Verifique se os registros retornados estão corretos e exporte os dados para excel, se possível encaminhe no botão SEND para Data Bulk Updater,por lá você conseguirá visualizar todas as informações tabeladas e realizar o contro C + V numa planilha excel.
 
+## Visual do Relatório
 
-![DadosDataBulk](.../imagens/xrmtoolbox-resultadofetch.png)
+![DadosDataBulk](../imagens/xrmtoolbox-resultadofetch.png)
 
 ---
 
