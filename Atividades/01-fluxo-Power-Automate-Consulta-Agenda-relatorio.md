@@ -1,6 +1,6 @@
 # Fluxo: Consulta de Reuniões e Exportação para Excel (Power Automate)
-
-## Visão Geral
+## Fluxo: Consulta de Reuniões e Exportação para Excel (Power Automate)
+### Visão Geral
 
 Fluxo agendado criado no **Power Automate** que é executado **diariamente às 18:00 (BRT)**.  
 O fluxo consulta o **calendário do Outlook** de um usuário, obtém todas as **reuniões do dia** (janela entre 06:00 e 22:00) e registra as informações em uma **planilha Excel** no OneDrive for Business. Cada participante é inserido em **uma linha separada** — se uma reunião tiver 6 participantes, o fluxo criará 6 linhas com os mesmos valores de **Assunto, Início e Término**, variando apenas o campo **Participante**.
