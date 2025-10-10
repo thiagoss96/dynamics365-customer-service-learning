@@ -10,7 +10,7 @@ A consulta pode ser usada para **alterações em massa de proprietário** ou **a
 Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo posteriormente:
 
 - Atualizar em massa o **proprietário (ownerid)**  
-- Aplicar outras operações, como alteração de status, atualização de campos, etc.
+- Aplicar outras operações, como atualização de campos, etc.
 
 ---
 
