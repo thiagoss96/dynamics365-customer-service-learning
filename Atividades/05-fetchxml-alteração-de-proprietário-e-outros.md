@@ -35,7 +35,7 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
 
 ## 1. Cabeçalho do Fetch
 
-```xml
+```sql
 <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
 
 | Parâmetro | Descrição |
@@ -47,7 +47,7 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
 
 # 3. Atributos Retornados
 
-```xml
+```sql
 <attribute name="accountid" />
 <attribute name="accountnumber" />
 <attribute name="ownerid" />
@@ -72,7 +72,7 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
 
 # 4. Filtro (Condições)
 
-```xml
+```sql
 <filter type="or">
   <condition attribute="CNPJ_CPF" operator="eq" value="COLAR_AQUI_CNPJ_OU_CPF" />
   <condition attribute="CNPJ_CPF" operator="eq" value="COLAR_AQUI_CNPJ_OU_CPF" />
