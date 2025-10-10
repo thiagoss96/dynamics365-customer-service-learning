@@ -1,7 +1,7 @@
 # FetchXML - Contas por CNPJ (Dynamics 365 / Dataverse)
 
 Este `FetchXML` foi desenvolvido para **retornar todas as contas (entity: account)** cujo campo personalizado `CNPJ_CPF` corresponde a um dos valores informados.  
-A consulta pode ser usada para **alterações em massa de proprietário, inativação de contas** ou **atualização de campos personalizados** dentro do **XrmToolBox**.
+A consulta pode ser usada para **alterações em massa de proprietário** ou **atualização de campos personalizados** dentro do **XrmToolBox**.
 
 ---
 
@@ -10,7 +10,6 @@ A consulta pode ser usada para **alterações em massa de proprietário, inativa
 Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo posteriormente:
 
 - Atualizar em massa o **proprietário (ownerid)**  
-- **Inativar** contas  
 - Aplicar outras operações, como alteração de status, atualização de campos, etc.
 
 ---
