@@ -40,3 +40,5 @@ O objetivo foi adequar a conexão ao **Exchange Online** utilizando a **autentic
 - Testar a conexão no Dynamics 365 Customer Service após a configuração para garantir que os e-mails estão sendo processados corretamente.  
 - Revisar periodicamente o grupo de segurança para manter a segurança e controle do fluxo de e-mails.
 
+### Ocorrências Primárias
+![appregistration](../imagens/azure app registration.jpg)
