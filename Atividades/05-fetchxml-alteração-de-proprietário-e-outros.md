@@ -122,5 +122,3 @@ ENTÃO retorna registro
 - [ ] Documentar resultados obtidos
 - [ ] Revisar índices do campo CNPJ_CPF
 
-*Precisa de mais algum elemento específico?* ✅
-
