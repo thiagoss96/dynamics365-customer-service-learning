@@ -50,20 +50,20 @@ Use o seguinte FetchXML para identificar usuários desativados e as filas em que
 4. Clique em **Execute** ou **Run** para listar os registros.  
 5. Verifique se os registros retornados estão corretos e exporte os dados para excel, se possível encaminhe no botão SEND para Data Bulk Updater,por lá você conseguirá visualizar todas as informações tabeladas e realizar o contro C + V numa planilha excel.
 
-## Visual do Relatório
+### Visual do Relatório
 
 ![DadosDataBulk](../imagens/xrmtoolbox-resultadofetch.png)
 
 ---
 
-# 🧩 Passo 4: Gerando Comandos SQL para Limpeza de Usuários Desativados
+## 🧩 Passo 4: Gerando Comandos SQL para Limpeza de Usuários Desativados
 
 Você lembra da **planilha exportada no Bulk Data Updater**, com todos os dados de usuários?  
 Então — é nela que vamos trabalhar agora! Nosso objetivo é gerar os **comandos SQL prontos** para exclusão de usuários desativados das tabelas **team membership** e **queue membership** no **SQL 4 CDS**.
 
 ---
 
-## 🧠 O que você vai precisar
+### 🧠 O que você vai precisar
 
 - Planilha exportada com os **GUIDs dos usuários** (`systemuserid`)  
 - Acesso ao **SQL 4 CDS** (no XrmToolBox)  
@@ -71,7 +71,7 @@ Então — é nela que vamos trabalhar agora! Nosso objetivo é gerar os **coman
 
 ---
 
-## 📊 Estrutura da planilha
+### 📊 Estrutura da planilha
 
 Crie uma nova aba (sheet) com as seguintes colunas:
 
@@ -84,7 +84,7 @@ Crie uma nova aba (sheet) com as seguintes colunas:
 
 ---
 
-## 🧮 Exemplo de concatenação
+### 🧮 Exemplo de concatenação
 
 No Excel ou Sheets, use uma fórmula semelhante a esta:
 
@@ -103,19 +103,19 @@ E também para a tabela de filas:
 DELETE FROM queuemembership WHERE queuemembershipid = 'GUID_DO_USUARIO1';
 ```
 
-## Visual da planilha
+### Visual da planilha
 
 ![PlanilhaExcel](../imagens/planilhaexcel-concat.png)
 
 
 
-# � Passo 5: Limpeza na Entidade de Membros de Equipe (TeamMembership)
+## � Passo 5: Limpeza na Entidade de Membros de Equipe (TeamMembership)
 
-## 📋 Entendendo a Entidade TeamMembership
+### 📋 Entendendo a Entidade TeamMembership
 
 A entidade **TeamMembership** é responsável por armazenar a associação entre usuários e equipes no Dynamics 365. Cada registro representa um usuário que pertence a uma equipe específica.
 
-## 🔧 Processo de Limpeza no SQL 4 CDS
+### 🔧 Processo de Limpeza no SQL 4 CDS
 
 ### ** 1º: Preparação do Comando**
 
@@ -159,30 +159,30 @@ f. **Valide a Exclusão**
    SELECT * FROM teammembership WHERE teammembershipid = 'GUID_DO_USUARIO_AQUI';
    ```
 
-# Passo 6: Limpeza na Entidade de Membros de Filas (QueueMembership)
+## Passo 6: Limpeza na Entidade de Membros de Filas (QueueMembership)
 
-## 📋 Comando para Exclusão
+### 📋 Comando para Exclusão
 
 ```sql
 DELETE FROM queuemembership WHERE queuemembershipid = 'GUID_DO_USUARIO_AQUI';
 ```
 
-## 🔧 Processo de Execução
+### 🔧 Processo de Execução
 
 **Siga exatamente o mesmo passo a passo utilizado anteriormente para a entidade TeamMembership**, substituindo apenas o comando SQL pelo acima.
 
-## ⚠️ Observações Específicas
+# ⚠️ Observações Específicas
 
 - Certifique-se de que está usando o nome correto da entidade: `queuemembership`
 - Valide que o GUID corresponde a um registro válido na tabela de membros de filas
 - A exclusão removerá o usuário da associação com as filas
 
-## Visual do Select - SQL 4 CDS
+### Visual do Select - SQL 4 CDS
  
 - ![teammembershipid](../imagens/teamembership-id-sql.png)
-- ![queuemembershipid](../queuemembership-id-sql.png)
+- ![queuemembershipid](../imagens/queuemembership-id-sql.png)
 
-## ⚠️ Observações Importantes
+### ⚠️ Observações Importantes
 
 - 🔴 Esta ação é **irreversível**
 - 🔍 Certifique-se de que o GUID está correto antes de executar
