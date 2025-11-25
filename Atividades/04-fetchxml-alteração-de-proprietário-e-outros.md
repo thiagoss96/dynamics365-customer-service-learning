@@ -116,7 +116,7 @@ ENTÃO retorna registro
 
 ---
 
-**Próximas Ações:**
+**Próximas Ações:**  - EM CONSTRUÇÃO..
 - [ ] Validar formato dos CNPJs
 - [ ] Testar performance da query
 - [ ] Documentar resultados obtidos
