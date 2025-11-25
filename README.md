@@ -68,7 +68,8 @@ Sou profissional de tecnologia com experiência em **Dynamics 365 CRM e Power Pl
 Atualmente, aplico meus conhecimentos na construção de soluções funcionais e fluxos inteligentes dentro do ecossistema Microsoft, buscando unir **simplicidade e eficiência** em cada entrega.
 
 📧 **thiagosoaresdesouza96@outlook.com**  
-🔗 [LinkedIn - Thiago Souza]([https://www.linkedin.com/in/thiago-soares-64713933/)
+
+🔗 [LinkedIn - Thiago Souza](https://www.linkedin.com/in/thiago-soares-64713933/)
 
 ---
 
