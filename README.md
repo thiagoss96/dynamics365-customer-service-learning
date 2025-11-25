@@ -22,14 +22,13 @@ Cada atividade foi construída com foco em **entender profundamente o funcioname
 
 | Nº | Título | Descrição |
 |----|---------|------------|
-| 01 | Customização de Entidades e Campos | Criação de campos personalizados, listas suspensas e views no módulo Customer Service. |
+| 01 | Fluxo Power Automate | Consulta de Reuniões e Exportação para Excel. |
 | 02 | View de Contatos Relacionados | View configurada para exibir até 20 contatos vinculados a uma conta, com campos personalizados para nome, sobrenome, e-mail e departamento. |
 | 03 | Dashboard de Atividades e Casos | Painel visual com KPIs e métricas extraídas do Dynamics, integradas ao Power BI. |
-| 04 | Fluxo de Aprovação Automático | Automação com Power Automate integrando Dynamics 365 e Outlook para aprovações de registros. |
-| 05 | Consulta FetchXML | Criação de consultas FetchXML avançadas para exibir contatos relacionados a contas específicas, validando GUIDs e condições de filtro. |
-| 06 | Atualização em Massa via XrmToolBox | Uso do plugin **Bulk Data Updater** para atualização em massa de registros e do **SQL 4 CDS** para consultas diretas ao Dataverse. |
-| 07 | Relatório Interativo no Power BI | Criação de relatório conectado ao Dataverse, consolidando dados de clientes e atividades do Dynamics. |
-| 08 | Integração entre Dynamics e Power Platform | Criação de soluções que conectam o Dataverse a fluxos automatizados no Power Automate e relatórios analíticos no Power BI. |
+| 04 | Consulta FetchXML | Criação de consultas FetchXML avançadas para exibir contatos relacionados a contas específicas, validando GUIDs e condições de filtro. |
+| 05 | App Registration - Azure & Filas no Customer Service | Utilização e sincronização de filas no Customer Service para gerar e-mails em ocorrências. |
+| 06 | Identificando Usuários Desativados em Filas | Uso do plugin **FetchXML**, **Bulk Data Updater** e **SQL 4CDS** para atualização de registros e consultas diretamente no Dataverse. |
+| 07 | Desativar/Ativar Contas em Massa | Utilizando Plugin do XRMToolbox para inativar ou ativar contas em massa. |
 
 ---
 
