@@ -178,8 +178,7 @@ B - Os campos obrigatórios são preenchidos
 
 C - A lógica fica centralizada e reutilizável
 
-### D - É possível estender o fluxo e capturar dados de outros campos da propria conta e espelhar em outros campos do contato. Ou inicializar o fluxo de uma forma diferente, importar dados de emails para conta, se na planilha houver a coluna e-mail e a razão social ou cnpj, ou até mesmo um código especificvo e unico que referência apenas um cliente, para extrairmos o accountid.
-
+### É possível estender o fluxo para capturar dados adicionais da própria entidade Conta e espelhá-los em campos correspondentes do Contato. Além disso, o fluxo pode ser inicializado a partir de outros cenários, como a importação de dados via planilhas, onde exista a coluna de e-mail acompanhada da razão social, CNPJ ou até mesmo um código específico e único que referencie o cliente, permitindo a identificação da conta correta e a obtenção do accountid.
 
 ## Boas Práticas Aplicadas:
 
