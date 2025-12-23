@@ -63,17 +63,18 @@ Quando uma integração cria ou atualiza contas no Dynamics 365 Customer Service
 ---
 
 ## Arquitetura do Fluxo
-![Contato Criado e relacionado à conta](../imagens/fluxo_com_exito.png)
+
 ### Trigger
 
 - Dataverse – Quando uma linha é adicionada ou modificada  
 - Tabela: Account  
 - Colunas monitoradas: emailaddress2, emailaddress3  
 
-![Inclusão de Emails](../imagens/fluxo_pa.png)
+
 ---
 
 ## Lógica do Fluxo (Resumo)
+![Inclusão de Emails](../imagens/fluxo_pa.png)
 
 ### Email Address 2
 
@@ -87,6 +88,9 @@ Quando uma integração cria ou atualiza contas no Dynamics 365 Customer Service
 ### Email Address 3
 
 Repete exatamente a mesma lógica aplicada ao Email 2.
+
+![Contato Criado e relacionado à conta](../imagens/fluxo_com_exito.png)
+
 
 ---
 
