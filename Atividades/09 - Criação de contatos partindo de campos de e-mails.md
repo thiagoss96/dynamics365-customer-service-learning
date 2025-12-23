@@ -28,10 +28,6 @@ Quando uma integração cria ou atualiza contas no Dynamics 365 Customer Service
 - Cria contatos relacionados à conta  
 - Evita duplicidade caso o contato já exista para aquela conta  
 
-### Ocorrências Primárias
-
-
-![Inclusão de Emails](../imagens/inclusaoemail.png)
 
 
 ---
@@ -46,6 +42,9 @@ Quando uma integração cria ou atualiza contas no Dynamics 365 Customer Service
   - Campanhas  
   - Segmentações  
 
+
+![Inclusão de Emails](../imagens/inclusaoemail.png)
+}
 ---
 
 ## Pré-requisitos
@@ -64,13 +63,14 @@ Quando uma integração cria ou atualiza contas no Dynamics 365 Customer Service
 ---
 
 ## Arquitetura do Fluxo
-
+![Contato Criado e relacionado à conta](../imagens/fluxo_com_exito.png)
 ### Trigger
 
 - Dataverse – Quando uma linha é adicionada ou modificada  
 - Tabela: Account  
 - Colunas monitoradas: emailaddress2, emailaddress3  
 
+![Inclusão de Emails](../imagens/fluxo_pa.png)
 ---
 
 ## Lógica do Fluxo (Resumo)
@@ -107,7 +107,7 @@ Nota: para casos específicos na qual o e-mail não possua caracteres especiais,
 
 ### Expressão – Nome (Firstname)
 
-```text
+```
 if(
   contains(split(triggerOutputs()?['body/emailaddress2'],'@')[0],'.'),
   first(split(split(triggerOutputs()?['body/emailaddress2'],'@')[0],'.')),
@@ -121,11 +121,11 @@ if(
     )
   )
 )
-
+```
 
 ### Expressão – Sobrenome (Lastname)
 
-```text
+```
 if(
   contains(split(triggerOutputs()?['body/emailaddress2'],'@')[0],'.'),
   last(split(split(triggerOutputs()?['body/emailaddress2'],'@')[0],'.')),
@@ -140,6 +140,8 @@ if(
   )
 )
 
+```
+![Inclusão de Emails](../imagens/saida_de_dados_apos_fluxo_rodar.png)
 
 ## 📌 Observação:
 Para Email 3, basta substituir emailaddress2 por emailaddress3, na estrutura do fluxo para campo Email 3. 
@@ -164,8 +166,11 @@ Nome da Empresa (parentcustomerid)
 Dessa forma:
 
 A - O contato é corretamente relacionado à conta
+![Contato Criado e relacionado à conta](../imagens/contato_criado1.png)
+
 
 B - Os campos obrigatórios são preenchidos
+![Contato Criado e relacionado à conta](../imagens/contato_criado2.png)
 
 C - A lógica fica centralizada e reutilizável
 
@@ -213,7 +218,6 @@ Melhor qualidade de base para marketing
 
 Escalabilidade para integrações
 
-Governança de dados no CRM
 
 
 ###Autor
