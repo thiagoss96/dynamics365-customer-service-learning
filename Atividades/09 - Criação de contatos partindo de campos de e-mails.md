@@ -44,7 +44,7 @@ Quando uma integração cria ou atualiza contas no Dynamics 365 Customer Service
 
 
 ![Inclusão de Emails](../imagens/inclusaoemail.png)
-}
+
 ---
 
 ## Pré-requisitos
