@@ -42,14 +42,14 @@ Quando uma integração cria ou atualiza contas no Dynamics 365 Customer Service
 
 ## Pré-requisitos
 
-- Microsoft Dynamics 365 / Dataverse  
+# Microsoft Dynamics 365 / Dataverse  
 - Entidades:
   - Account (Conta)  
   - Contact (Contato)  
-- Campos existentes na Conta:
+# Campos existentes na Conta:
   - emailaddress2  
   - emailaddress3  
-- Campo obrigatório no Contato:
+# Campo obrigatório no Contato:
   - parentcustomerid (Nome da Empresa)  
 - Power Automate (Cloud Flow)  
 
@@ -90,11 +90,12 @@ A automação extrai nome e sobrenome a partir do e-mail, respeitando diferentes
 
 | Email                   | Nome         | Sobrenome |
 |------------------------|--------------|-----------|
-| memphis.depay@parabelum | Memphis     | Depay    |
-| yuri-alberto@equity.com | Yuri       | Alberto    |
+| memphis.depay@parabelum | Memphis      | Depay    |
+| yuri-alberto@equity.com | Yuri         | Alberto    |
+| breno_bidon@yahoo.com  | Breno         | Bidon   |
 | thiagosoares@gmail.com  | thiagosoares | Contato   |
 
-Nota: para casos específicos na qual o e-mail não possua caracteres especiais, como: " . ", " - ", " _ ", de fato, não saberá qual é o nome e sobrenome. Nesse caso, estou considerando nome e sobrenome tudo junto para o campo nome e chumbar de forma definitiva no campo sobrenome a nomemclatura: "Contato".
+Nota: para casos específicos na qual o e-mail não possua caracteres especiais, como: " . ", " - ", " _ ", de fato, a expressão não identificará qual é o nome e sobrenome. Nesse caso, será considerando nome e sobrenome no campo "nome" e chumbar de forma definitiva no campo: "sobrenome" a nomemclatura: "Contato".
 
 ### Expressão – Nome (Firstname)
 
@@ -105,9 +106,14 @@ if(
   if(
     contains(split(triggerOutputs()?['body/emailaddress2'],'@')[0],'-'),
     first(split(split(triggerOutputs()?['body/emailaddress2'],'@')[0],'-')),
-    split(triggerOutputs()?['body/emailaddress2'],'@')[0]
+    if(
+      contains(split(triggerOutputs()?['body/emailaddress2'],'@')[0],'_'),
+      first(split(split(triggerOutputs()?['body/emailaddress2'],'@')[0],'_')),
+      split(triggerOutputs()?['body/emailaddress2'],'@')[0]
+    )
   )
 )
+
 
 ### Expressão – Sobrenome (Lastname)
 
@@ -118,9 +124,14 @@ if(
   if(
     contains(split(triggerOutputs()?['body/emailaddress2'],'@')[0],'-'),
     last(split(split(triggerOutputs()?['body/emailaddress2'],'@')[0],'-')),
-    'Contato'
+    if(
+      contains(split(triggerOutputs()?['body/emailaddress2'],'@')[0],'_'),
+      last(split(split(triggerOutputs()?['body/emailaddress2'],'@')[0],'_')),
+      split(triggerOutputs()?['body/emailaddress2'],'@')[0]
+    )
   )
 )
+
 
 ## 📌 Observação:
 Para Email 3, basta substituir emailaddress2 por emailaddress3, na estrutura do fluxo para campo Email 3. 
@@ -144,11 +155,13 @@ Nome da Empresa (parentcustomerid)
 
 Dessa forma:
 
-O contato é corretamente relacionado à conta
+A - O contato é corretamente relacionado à conta
 
-Os campos obrigatórios são preenchidos
+B - Os campos obrigatórios são preenchidos
 
-A lógica fica centralizada e reutilizável
+C - A lógica fica centralizada e reutilizável
+
+
 
 ## Boas Práticas Aplicadas:
 
@@ -193,3 +206,10 @@ Melhor qualidade de base para marketing
 Escalabilidade para integrações
 
 Governança de dados no CRM
+
+
+###Autor
+
+Thiago Souza
+
+Power Platform | Dynamics 365 | Automação de Processos
