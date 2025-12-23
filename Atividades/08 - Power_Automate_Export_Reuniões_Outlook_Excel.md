@@ -1,8 +1,7 @@
 # 📅 Fluxo Power Automate: Exportar reuniões diárias do Outlook para Excel
  
 Este guia ensina passo a passo como criar um fluxo no Power Automate que coleta todas as reuniões do dia e registra no Excel, incluindo lista de participantes.
- 
-> **Dica:** Você pode adicionar imagens de cada passo adicionando links com Markdown: `![descrição](link-da-imagem)`
+
  
 ## 1️⃣ Criar fluxo automatizado com gatilho de Recurrence
  
@@ -15,7 +14,6 @@ Este guia ensina passo a passo como criar um fluxo no Power Automate que coleta 
    - Fuso Horário: **(UTC-03:00) Brasília**
    - Executar em: **18:00**
  
-![Imagem do passo 1](link-da-imagem-1)
  
 Clique em **Criar**.
  
@@ -31,7 +29,7 @@ Clique em **Criar**.
   ```
   @{formatDateTime(addHours(startOfDay(utcNow()), 6), 'yyyy-MM-ddTHH:mm:ssZ')}
   ```
-![Imagem do passo 2 - InicioJanela](link-da-imagem-2)
+
  
 ### 🔵 Variável: FimJanela
 - Ação: **Inicializar variável**
@@ -41,7 +39,7 @@ Clique em **Criar**.
   ```
   @{formatDateTime(addHours(startOfDay(utcNow()), 22), 'yyyy-MM-ddTHH:mm:ssZ')}
   ```
-![Imagem do passo 2 - FimJanela](link-da-imagem-3)
+
  
 ---
  
@@ -52,8 +50,7 @@ Ação: **Obter o modo de exibição Calendário de eventos (V3)**
 - **ID do calendário:** normalmente use "Calendar".
 - **Hora de Início:** `@{variables('InicioJanela')}`
 - **Hora de Término:** `@{variables('FimJanela')}`
- 
-![Imagem do passo 3](link-da-imagem-4)
+
  
 ---
  
@@ -69,7 +66,7 @@ Ação: **Obter o modo de exibição Calendário de eventos (V3)**
 - Tipo: **Matriz**
 - Valor: *(deixe em branco)*
  
-![Imagem do passo 4](link-da-imagem-5)
+
  
 ---
  
@@ -90,7 +87,6 @@ Dentro dele, adicione:
 ### 5.2) Definir variável – ListaParticipantes (Matriz)
 - Valor: `@{split(variables('ListaParticipantesString'), ';')}`
  
-![Imagem do passo 5](link-da-imagem-6)
  
 ---
  
@@ -112,7 +108,6 @@ Campos:
 - Término: `@{formatDateTime(convertTimeZone(items('Aplicar_a_cada')?['end'],'UTC','E. South America Standard Time'),'yyyy/MM/dd HH:mm:ss')}`
 - Participantes: `@{items('Aplicar_a_cada_1')}`
  
-![Imagem do passo 6](link-da-imagem-7)
  
 ---
  
@@ -122,6 +117,6 @@ Clique em **Salvar** e dê o nome que desejar.
  
 Este fluxo executa diariamente às 18h, varre todas as reuniões do dia e registra no Excel assunto, horário e participantes 📊 — perfeito para projetos que exigem controle de horas ou análise de agendas.
  
-![Imagem do passo 7](link-da-imagem-8)
+![Estrutura do Fluxo](../imagens/Imagem-fluxo-01.png)
  
 Fim.
