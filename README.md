@@ -30,7 +30,7 @@ Cada atividade foi construída com foco em **entender profundamente o funcioname
 | 06 | Identificando Usuários Desativados em Filas | Uso do plugin **FetchXML**, **Bulk Data Updater** e **SQL 4CDS** para atualização de registros e consultas diretamente no Dataverse. |
 | 07 | Desativar/Ativar Contas em Massa | Utilizando Plugin do XRMToolbox para inativar ou ativar contas em massa. |
 | 08 | Exportar reuniões diárias do Outlook para Excel| Utilizando Power Automate e Outlook. |
-| ![09](./Atividades/09 - Criação de contatos partindo de campos de e-mails.md) | Criação de Contas para marketing| Automação de Criação de Contatos a partir dos campos Email 2 e Email 3 |
+| 09 | Criação de Contas para marketing| Automação de Criação de Contatos a partir dos campos Email 2 e Email 3 |
 
 
 ---
