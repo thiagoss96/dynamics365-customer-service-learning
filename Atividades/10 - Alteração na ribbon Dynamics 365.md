@@ -139,3 +139,10 @@ Após publicar a solution:
 Manter os botões padrão no local correto da Ribbon e realizar apenas ajustes de nomenclatura via **Label** e posicionamento visual é a abordagem mais segura e recomendada.
 
 Essa prática garante estabilidade do ambiente, preserva o fluxo de negócio padrão do Dynamics e reduz riscos em futuras atualizações da Microsoft.
+
+
+###Autor
+
+Thiago Souza
+
+Power Platform | Dynamics 365 | Automação de Processos
