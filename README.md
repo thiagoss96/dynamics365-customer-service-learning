@@ -31,7 +31,7 @@ Cada atividade foi construída com foco em **entender profundamente o funcioname
 | 07 | Desativar/Ativar Contas em Massa | Utilizando Plugin do XRMToolbox para inativar ou ativar contas em massa. |
 | 08 | Exportar reuniões diárias do Outlook para Excel| Utilizando Power Automate e Outlook. |
 | 09 | Criação de Contas para marketing| Automação de Criação de Contatos a partir dos campos Email 2 e Email 3 |
-
+| 10 | Alteração na Ribbon Dynamics 365|  Como realizar remoção, ocultar e mover botões na ribbon do Dynamics 365 |
 
 ---
 
