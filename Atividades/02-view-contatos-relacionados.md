@@ -45,3 +45,8 @@ Criar um relatório (view) na entidade **Contato** para exibir todas as informa�
 
 ![Filtros da View](../imagens/view-contatos-filtros.png)
 
+###Autor
+
+Thiago Souza
+
+Power Platform | Dynamics 365 | Automação de Processos
