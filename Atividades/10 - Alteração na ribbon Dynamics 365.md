@@ -23,10 +23,11 @@ Exemplos de solutions:
 * `ribbon_lead`
 * `ribbon_contas`
 * `ribbon_incident`
-
-Cada solution representa a Ribbon de uma entidade específica.
+* 
+obs: Cada solution representa a Ribbon de uma entidade específica.
 Antes de qualquer alteração, sempre valide se a entidade correta foi selecionada para evitar impactos em outras áreas do sistema.
 
+![interface Ribbon Workbench](../imagens/selecionar_Ribbon.png)
 ---
 
 ## Estrutura da Ribbon
