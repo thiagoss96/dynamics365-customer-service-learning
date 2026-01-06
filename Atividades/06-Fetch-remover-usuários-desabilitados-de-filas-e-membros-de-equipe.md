@@ -1,13 +1,12 @@
-# 🧹 Identificando Usuários Desativados em Filas no Dynamics 365 Customer Service
+# Identificando Usuários Desativados em Filas no Dynamics 365 Customer Service
 
-Recentemente realizei uma tarefa interessante e, claro, precisava compartilhar no LinkedIn 😄.  
 No **Dynamics 365 Customer Service**, percebi que havia muitos **usuários desativados** associados a filas. Para manter o sistema organizado, é importante fazer a **grande limpeza**!
 
 Neste post, vou mostrar a forma prática de identificar esses usuários usando **FetchXML no XrmToolBox**.
 
 ---
 
-## 🔹 Passo 1: Preparar o FetchXML
+##  Passo 1: Preparar o FetchXML
 
 Use o seguinte FetchXML para identificar usuários desativados e as filas em que ainda estão associados:
 
@@ -34,7 +33,7 @@ Use o seguinte FetchXML para identificar usuários desativados e as filas em que
 </fetch>
 ```
 
-## ✅ Passo 2: O que essa Fetch retorna
+## Passo 2: O que essa Fetch retorna
 
 - **Usuários desativados** (`isdisabled = 1`)  
 - **Filas** em que eles ainda estão associados  
@@ -42,7 +41,7 @@ Use o seguinte FetchXML para identificar usuários desativados e as filas em que
 
 ---
 
-## 🔹 Passo 3: Executar no XrmToolBox
+## Passo 3: Executar no XrmToolBox
 
 1. Abra o **XrmToolBox**.  
 2. Abra o **FetchXML Builder**.  
@@ -56,14 +55,14 @@ Use o seguinte FetchXML para identificar usuários desativados e as filas em que
 
 ---
 
-## 🧩 Passo 4: Gerando Comandos SQL para Limpeza de Usuários Desativados
+## Passo 4: Gerando Comandos SQL para Limpeza de Usuários Desativados
 
 Você lembra da **planilha exportada no Bulk Data Updater**, com todos os dados de usuários?  
 Então — é nela que vamos trabalhar agora! Nosso objetivo é gerar os **comandos SQL prontos** para exclusão de usuários desativados das tabelas **team membership** e **queue membership** no **SQL 4 CDS**.
 
 ---
 
-### 🧠 O que você vai precisar
+### O que você vai precisar
 
 - Planilha exportada com os **GUIDs dos usuários** (`systemuserid`)  
 - Acesso ao **SQL 4 CDS** (no XrmToolBox)  
@@ -71,7 +70,7 @@ Então — é nela que vamos trabalhar agora! Nosso objetivo é gerar os **coman
 
 ---
 
-### 📊 Estrutura da planilha
+###  Estrutura da planilha
 
 Crie uma nova aba (sheet) com as seguintes colunas:
 
@@ -84,7 +83,7 @@ Crie uma nova aba (sheet) com as seguintes colunas:
 
 ---
 
-### 🧮 Exemplo de concatenação
+###  Exemplo de concatenação
 
 No Excel ou Sheets, use uma fórmula semelhante a esta:
 
@@ -109,13 +108,13 @@ DELETE FROM queuemembership WHERE queuemembershipid = 'GUID_DO_USUARIO1';
 
 
 
-## � Passo 5: Limpeza na Entidade de Membros de Equipe (TeamMembership)
+##  Passo 5: Limpeza na Entidade de Membros de Equipe (TeamMembership)
 
-### 📋 Entendendo a Entidade TeamMembership
+###  Entendendo a Entidade TeamMembership
 
 A entidade **TeamMembership** é responsável por armazenar a associação entre usuários e equipes no Dynamics 365. Cada registro representa um usuário que pertence a uma equipe específica.
 
-### 🔧 Processo de Limpeza no SQL 4 CDS
+###  Processo de Limpeza no SQL 4 CDS
 
 ### ** 1º: Preparação do Comando**
 
@@ -161,17 +160,17 @@ f. **Valide a Exclusão**
 
 ## Passo 6: Limpeza na Entidade de Membros de Filas (QueueMembership)
 
-### 📋 Comando para Exclusão
+### Comando para Exclusão
 
 ```sql
 DELETE FROM queuemembership WHERE queuemembershipid = 'GUID_DO_USUARIO_AQUI';
 ```
 
-### 🔧 Processo de Execução
+###  Processo de Execução
 
 **Siga exatamente o mesmo passo a passo utilizado anteriormente para a entidade TeamMembership**, substituindo apenas o comando SQL pelo acima.
 
-# ⚠️ Observações Específicas
+#  Observações Específicas
 
 - Certifique-se de que está usando o nome correto da entidade: `queuemembership`
 - Valide que o GUID corresponde a um registro válido na tabela de membros de filas
@@ -182,12 +181,17 @@ DELETE FROM queuemembership WHERE queuemembershipid = 'GUID_DO_USUARIO_AQUI';
 - ![teammembershipid](../imagens/teamembership-id-sql.png)
 - ![queuemembershipid](../imagens/queuemembership-id-sql.png)
 
-### ⚠️ Observações Importantes
+###  Observações Importantes
 
-- 🔴 Esta ação é **irreversível**
-- 🔍 Certifique-se de que o GUID está correto antes de executar
-- 🧪 Recomenda-se executar primeiro em ambiente de homologação
-- 💾 Faça backup se necessário
+- Esta ação é **irreversível**
+- Certifique-se de que o GUID está correto antes de executar
+- Recomenda-se executar primeiro em ambiente de homologação
+- Faça backup se necessário
 
+###Autor
+
+Thiago Souza
+
+Power Platform | Dynamics 365 | Automação de Processos
 
 
