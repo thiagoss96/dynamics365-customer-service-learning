@@ -53,3 +53,10 @@ Criar um **dashboard no Dynamics 365 Customer Service** para monitorar e analisa
 ![Ocorrências Resolvidas](../imagens/dashboard-ocorrências-resolvidas-01.png)
 ![Ocorrências Resolvidas](../imagens/dashboard-ocorrências-resolvidas-02.png)
 ![Ocorrências Resolvidas](../imagens/dashboard-ocorrências-resolvidas-03.png)
+
+
+###Autor
+
+Thiago Souza
+
+Power Platform | Dynamics 365 | Automação de Processos
