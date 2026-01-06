@@ -149,3 +149,9 @@ Também é possível estender o fluxo para **enviar a planilha por e-mail**, jun
 ##Imagem da planilha 
 ![planilha](../imagens/Imagem-planilha-01.png)
 
+###Autor
+
+Thiago Souza
+
+Power Platform | Dynamics 365 | Automação de Processos
+
