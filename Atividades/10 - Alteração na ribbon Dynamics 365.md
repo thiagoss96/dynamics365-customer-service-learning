@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Documentar o processo de ajuste de botões na Ribbon do Dynamics 365 utilizando o plugin **Ribbon Workbench** (XrmToolBox), descrevendo a estrutura da Ribbon, boas práticas e o ajuste realizado na nomenclatura do botão **Qualificar Lead**.
+Documentar o processo de ajuste de botões na Ribbon do Dynamics 365 utilizando o plugin **Ribbon Workbench** (XrmToolBox), explicando a estrutura da Ribbon, boas práticas, limitações da plataforma e o ajuste realizado na nomenclatura e posicionamento do botão **Qualificar Lead**.
 
 ---
 
@@ -16,7 +16,7 @@ Documentar o processo de ajuste de botões na Ribbon do Dynamics 365 utilizando 
 
 ## Seleção da Solution
 
-Para alterar a Ribbon, é necessário selecionar no **Ribbon Workbench** a mesma **Solution** utilizada no Power Apps, referente à entidade que será ajustada.
+Para realizar qualquer ajuste na Ribbon, é necessário selecionar no **Ribbon Workbench** a mesma **Solution** utilizada no Power Apps, correspondente à entidade que será alterada.
 
 Exemplos de solutions:
 
@@ -24,8 +24,8 @@ Exemplos de solutions:
 * `ribbon_contas`
 * `ribbon_incident`
 
-Cada solution corresponde à Ribbon de uma entidade específica.
-Sempre valide se a entidade correta foi selecionada antes de aplicar qualquer alteração.
+Cada solution representa a Ribbon de uma entidade específica.
+Antes de qualquer alteração, sempre valide se a entidade correta foi selecionada para evitar impactos em outras áreas do sistema.
 
 ---
 
@@ -43,7 +43,7 @@ Ao abrir a Ribbon no Ribbon Workbench, são exibidas três linhas principais:
 
 * Exibida dentro de formulários, nos **subgrids (listas relacionadas)**
 * Exemplo: subgrid de Contatos dentro de uma Conta
-* Os botões atuam somente sobre os registros exibidos naquele subgrid
+* Os botões atuam apenas sobre os registros exibidos naquele subgrid
 
 ### Form
 
@@ -57,7 +57,7 @@ Ao abrir a Ribbon no Ribbon Workbench, são exibidas três linhas principais:
 
 ## Ajuste Realizado
 
-Após selecionar a solution correta e a Ribbon do tipo **Form**, os botões foram posicionados conforme solicitado, respeitando a estrutura padrão do Dynamics.
+Após selecionar a solution correta e a Ribbon do tipo **Form**, os botões foram reposicionados conforme solicitado, respeitando a estrutura padrão do Dynamics.
 
 Foi realizada a alteração da **Label (rótulo exibido ao usuário)** do botão padrão:
 
@@ -72,35 +72,49 @@ Foi realizada a alteração da **Label (rótulo exibido ao usuário)** do botão
 Ao clicar no botão **Converter em Conta**, o Dynamics executa exatamente o mesmo comportamento do botão padrão **Qualificar Lead**, sem impacto em regras de negócio, fluxos ou automações existentes.
 
 ---
-## Comportamento de Duplicidade de Botões na Ribbon
 
-Durante o ajuste de posicionamento de botões padrão na Ribbon, pode ocorrer do botão aparecer duplicado na interface do Dynamics, mesmo não aparentando duplicidade no Ribbon Workbench.
+## Comportamento de Duplicidade de Botões na Ribbon Form
 
-Isso acontece porque o botão padrão permanece vinculado ao seu grupo original, e ao ser arrastado para outro local, passa a ser exibido em mais de um grupo da Ribbon. O Ribbon Workbench exibe a estrutura lógica do botão, mas não evidencia todas as renderizações finais na interface.
+Ao reposicionar um botão padrão na Ribbon utilizando o Ribbon Workbench, o botão pode aparecer **duplicado visualmente** na interface do Dynamics, mesmo não aparentando duplicidade no Ribbon Workbench.
 
-Para evitar duplicidade visual, é necessário remover o botão do grupo original e mantê-lo apenas no novo grupo desejado.
+Esse comportamento ocorre porque:
 
-Após a publicação, recomenda-se limpar o cache do navegador e validar o comportamento em diferentes registros e sessões.
+* O botão permanece vinculado ao grupo original
+* O mesmo botão passa a ser renderizado também no novo grupo onde foi posicionado
+* Trata-se do **mesmo botão**, com o mesmo comando e a mesma lógica interna
 
+### Abordagem correta
+
+Para resolver esse comportamento, a prática correta é **ocultar a instância duplicada** do botão no grupo original da Ribbon Form, mantendo apenas a renderização desejada.
+
+Nenhum botão padrão foi removido do sistema, apenas ocultado visualmente.
+
+Essa abordagem garante:
+
+* Preservação do botão padrão
+* Manutenção da lógica nativa do Dynamics
+* Compatibilidade com futuras atualizações
+* Eliminação da duplicidade visual
 
 ---
 
 ## Boas Práticas Aplicadas
 
-* Nenhum botão padrão foi removido
-* Nenhuma lógica interna foi recriada
-* Nenhum script customizado foi adicionado
-* Apenas ajustes visuais e de posicionamento foram realizados
+* Não remover botões padrão
+* Não alterar nome lógico ou comando
+* Priorizar ajustes visuais (Label e posicionamento)
+* Ocultar botões duplicados em vez de removê-los
+* Sempre validar a Ribbon **Form** após alterações
 
-Essa abordagem garante:
+Após publicar a solution:
 
-* Estabilidade do ambiente
-* Compatibilidade com futuras atualizações da Microsoft
-* Preservação do fluxo de negócio padrão do Dynamics
+* Limpar cache do navegador (Ctrl + F5)
+* Testar em registro novo e existente
+* Validar em aba anônima
 
 ---
 
-## Observações Técnicas
+## Limitações Técnicas Importantes
 
 * O cabeçalho do formulário possui limitações nativas
 * Campos exibidos no cabeçalho tornam-se somente leitura
@@ -111,12 +125,6 @@ Essa abordagem garante:
 
 ## Conclusão
 
-Manter os botões padrão no local original da Ribbon e realizar apenas ajustes de nomenclatura via **Label** é a abordagem mais segura e recomendada, evitando impactos técnicos e retrabalho futuro.
+Manter os botões padrão no local correto da Ribbon e realizar apenas ajustes de nomenclatura via **Label** e posicionamento visual é a abordagem mais segura e recomendada.
 
----
-
-Se quiser, posso:
-
-* criar uma versão **ultra resumida** do README
-* adicionar um **passo a passo com imagens (descrição dos prints)**
-* ou padronizar o README com template corporativo
+Essa prática garante estabilidade do ambiente, preserva o fluxo de negócio padrão do Dynamics e reduz riscos em futuras atualizações da Microsoft.
