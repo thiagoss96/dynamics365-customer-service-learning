@@ -1,4 +1,4 @@
-# 🔹 Criação de App Registration no Azure AD para Dynamics 365 Customer Service
+# Criação de App Registration no Azure AD para Dynamics 365 Customer Service
 
 Hoje quero compartilhar algo que aprendi recentemente e coloquei em prática: **Criação de App Registration no Azure AD** para integração com o Dynamics 365 Customer Service.
 
@@ -34,7 +34,7 @@ O objetivo foi adequar a conexão ao **Exchange Online** utilizando a **autentic
 
 ---
 
-## 💡 Dicas adicionais
+## Dicas adicionais
 
 - Sempre **salvar o Client Secret** em local seguro, pois ele não pode ser recuperado depois de criado.  
 - Testar a conexão no Dynamics 365 Customer Service após a configuração para garantir que os e-mails estão sendo processados corretamente.  
@@ -42,4 +42,10 @@ O objetivo foi adequar a conexão ao **Exchange Online** utilizando a **autentic
 
 ### Ocorrências Primárias
 ![App Registration](../imagens/azure-app-registration.png)
+
+###Autor
+
+Thiago Souza
+
+Power Platform | Dynamics 365 | Automação de Processos
 
