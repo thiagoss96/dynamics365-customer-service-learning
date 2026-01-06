@@ -23,12 +23,12 @@ Exemplos de solutions:
 * `ribbon_lead`
 * `ribbon_contas`
 * `ribbon_incident`
-* 
 obs: Cada solution representa a Ribbon de uma entidade específica.
 Antes de qualquer alteração, sempre valide se a entidade correta foi selecionada para evitar impactos em outras áreas do sistema.
+  ´
+![Interface Ribbon Workbench](../imagens/selecionar_Ribbon.png)
+![Importar Ribbon ao Workbench](../imagens/importar_ribbon.png)
 
-![interface Ribbon Workbench](../imagens/selecionar_Ribbon.png)
----
 
 ## Estrutura da Ribbon
 
@@ -40,11 +40,15 @@ Ao abrir a Ribbon no Ribbon Workbench, são exibidas três linhas principais:
 * Exemplo: lista de Leads, lista de Contas
 * Utilizada para ações em massa ou ações antes da abertura de um registro
 
+![Row Home Ribbon Workbench](../imagens/ribbon_home.png)
+
 ### Subgrid
 
 * Exibida dentro de formulários, nos **subgrids (listas relacionadas)**
 * Exemplo: subgrid de Contatos dentro de uma Conta
 * Os botões atuam apenas sobre os registros exibidos naquele subgrid
+
+![Row Subgrid Ribbon Workbench](../imagens/ribbon_subgrid.png)
 
 ### Form
 
@@ -53,6 +57,8 @@ Ao abrir a Ribbon no Ribbon Workbench, são exibidas três linhas principais:
 * Exemplo: Qualificar Lead, Desqualificar Lead, Salvar, Fechar
 
 > Normalmente, os ajustes são realizados na Ribbon **Form**, pois ela concentra os principais botões de negócio utilizados pelos usuários.
+
+![Row Form Ribbon Workbench](../imagens/ribbon_form.png)
 
 ---
 
@@ -63,6 +69,8 @@ Após selecionar a solution correta e a Ribbon do tipo **Form**, os botões fora
 Foi realizada a alteração da **Label (rótulo exibido ao usuário)** do botão padrão:
 
 * **Qualificar Lead** → **Converter em Conta**
+
+![Alteração da Label do Botão](../imagens/Alteração_nome_botão_ribbon.png)
 
 ### Importante
 
@@ -86,7 +94,9 @@ Esse comportamento ocorre porque:
 
 ### Abordagem correta
 
-Para resolver esse comportamento, a prática correta é **ocultar a instância duplicada** do botão no grupo original da Ribbon Form, mantendo apenas a renderização desejada.
+Para resolver esse comportamento, a prática correta é **ocultar a instância duplicada** do botão no grupo original da Ribbon Form, mantendo apenas a renderização desejada. Para isso, você deve clicar no botão no final da linha do Form, e clicar com lado esquedo do mouse e selecionar "Hiden". Com isso, ficará com uma tarja na diagonal em vermelho no botão e publicar a solution novamente. 
+
+![Botões Ocultados no Form Ribbon](../imagens/Botoes_ocultados_ribbon.png)
 
 Nenhum botão padrão foi removido do sistema, apenas ocultado visualmente.
 
