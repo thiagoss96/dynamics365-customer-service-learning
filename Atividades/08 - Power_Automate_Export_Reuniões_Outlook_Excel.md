@@ -119,4 +119,8 @@ Este fluxo executa diariamente às 18h, varre todas as reuniões do dia e regist
  
 ![Estrutura do Fluxo](../imagens/Imagem-fluxo-01.png)
  
-Fim.
+###Autor
+
+Thiago Souza
+
+Power Platform | Dynamics 365 | Automação de Processos
