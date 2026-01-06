@@ -132,3 +132,10 @@ Use o **FetchXML Builder** no XrmToolBox para criar sua consulta.
 * Sempre **fazer um teste** com 2 ou 3 registros antes de rodar em massa.
 * Certifique-se de que os CNPJs/CPFs estão corretos e no formato que o Dataverse reconhece.
 * **Atenção:** alterar apenas `statuscode` **não inativa a conta**; o `statecode` precisa ser atualizado junto.
+
+
+###Autor
+
+Thiago Souza
+
+Power Platform | Dynamics 365 | Automação de Processos
