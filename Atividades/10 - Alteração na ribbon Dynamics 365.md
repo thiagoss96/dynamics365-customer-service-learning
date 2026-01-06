@@ -72,6 +72,18 @@ Foi realizada a alteração da **Label (rótulo exibido ao usuário)** do botão
 Ao clicar no botão **Converter em Conta**, o Dynamics executa exatamente o mesmo comportamento do botão padrão **Qualificar Lead**, sem impacto em regras de negócio, fluxos ou automações existentes.
 
 ---
+## Comportamento de Duplicidade de Botões na Ribbon
+
+Durante o ajuste de posicionamento de botões padrão na Ribbon, pode ocorrer do botão aparecer duplicado na interface do Dynamics, mesmo não aparentando duplicidade no Ribbon Workbench.
+
+Isso acontece porque o botão padrão permanece vinculado ao seu grupo original, e ao ser arrastado para outro local, passa a ser exibido em mais de um grupo da Ribbon. O Ribbon Workbench exibe a estrutura lógica do botão, mas não evidencia todas as renderizações finais na interface.
+
+Para evitar duplicidade visual, é necessário remover o botão do grupo original e mantê-lo apenas no novo grupo desejado.
+
+Após a publicação, recomenda-se limpar o cache do navegador e validar o comportamento em diferentes registros e sessões.
+
+
+---
 
 ## Boas Práticas Aplicadas
 
