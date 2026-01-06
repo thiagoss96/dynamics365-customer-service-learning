@@ -14,7 +14,7 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
 
 ---
 
-## 🧩 Estrutura do FetchXML
+## Estrutura do FetchXML
 
 ```sql
 <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
@@ -31,7 +31,7 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
 ```
 
 
-# 🧠 Explicação Técnica
+# Explicação Técnica
 
 ## 1. Cabeçalho do Fetch
 
@@ -54,7 +54,7 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
 <attribute name="CNPJ_CPF" /> ---- deve verificar no banco o NOME LÓGICO DO campo cnpj/cpf
 ```
 
-## 📊 **Campos que serão retornados na consulta:**
+##  **Campos que serão retornados na consulta:**
 
 | Campo | Descrição |
 |-------|-----------|
@@ -80,17 +80,17 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
 </filter>
 ```
 
-## 🎯 **Características do Filtro:**
+## **Características do Filtro:**
 
 > **Nota importante:** O filtro usa `type="or"`, o que significa que **qualquer registro** que atenda a **pelo menos uma** das condições será retornado.
 
-### 📋 Condições Aplicadas:
+### Condições Aplicadas:
 
 1. **CNPJ:** `COLAR_AQUI_CNPJ_OU_CPF`
 2. **CNPJ:** `COLAR_AQUI_CNPJ_OU_CPF` 
 
 
-### ⚙️ **Especificações Técnicas:**
+### **Especificações Técnicas:**
 - **Tipo de Filtro:** `OR`
 - **Atributo Filtrado:** `CNPJ_CPF`
 - **Operador:** `eq` (equal/igual)
@@ -98,7 +98,7 @@ Selecionar um conjunto específico de contas com base em seus CNPJs, permitindo 
 
 ---
 
-### 💡 **Explicação Detalhada:**
+### **Explicação Detalhada:**
 
 Cada `<condition>` compara o valor do campo **`CNPJ_CPF`** com um número específico de CNPJ usando o operador **`eq`** (*equal*).
 
@@ -112,10 +112,14 @@ SE CNPJ_CPF = "COLAR_AQUI_CNPJ_OU_CPF5"
 ENTÃO retorna registro
 ```
 
-[📖 Documentação Completa](https://example.com/filter-docs) | [🔗 Exemplos Práticos](https://example.com/examples)
+[Documentação Completa](https://example.com/filter-docs) | [🔗 Exemplos Práticos](https://example.com/examples)
 
 ---
+###Autor
 
+Thiago Souza
+
+Power Platform | Dynamics 365 | Automação de Processos
 **Próximas Ações:**  - EM CONSTRUÇÃO..
 - [ ] Validar formato dos CNPJs
 - [ ] Testar performance da query
