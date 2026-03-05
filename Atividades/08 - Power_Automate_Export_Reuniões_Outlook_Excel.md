@@ -124,3 +124,5 @@ Este fluxo executa diariamente às 18h, varre todas as reuniões do dia e regist
 Thiago Souza
 
 Power Platform | Dynamics 365 | Automação de Processos
+
+![Visualizações](https://komarev.com/ghpvc/?username=thiagoss96-atv08&label=ACESSOS&color=0078d4&style=flat)
