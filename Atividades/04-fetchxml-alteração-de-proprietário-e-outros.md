@@ -126,3 +126,4 @@ Power Platform | Dynamics 365 | Automação de Processos
 - [ ] Documentar resultados obtidos
 - [ ] Revisar índices do campo CNPJ_CPF
 
+![Visualizações](https://komarev.com/ghpvc/?username=thiagoss96-atv04&label=ACESSOS&color=0078d4&style=flat)
