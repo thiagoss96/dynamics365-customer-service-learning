@@ -1,4 +1,4 @@
-[![Acessos](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/thiagoss96/atividades01&count_bg=%230078D4&title_bg=%23555555&title=Acessos&edge_flat=false)](https://github.com/thiagoss96/dynamics365-customer-service-learning)
+
 ## Fluxo: Consulta de Reuniões e Exportação para Excel (Power Automate)
 
 # Visão Geral
