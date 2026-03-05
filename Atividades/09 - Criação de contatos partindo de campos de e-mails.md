@@ -229,3 +229,5 @@ Escalabilidade para integrações
 Thiago Souza
 
 Power Platform | Dynamics 365 | Automação de Processos
+
+![Visualizações](https://komarev.com/ghpvc/?username=thiagoss96-atv09&label=ACESSOS&color=0078d4&style=flat)
