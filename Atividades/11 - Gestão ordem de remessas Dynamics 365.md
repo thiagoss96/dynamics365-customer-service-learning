@@ -192,6 +192,13 @@ A implementação seguiu princípios rigorosos de desenvolvimento para garantir 
 * **Desacoplamento de Processos:** Arquitetura baseada em gatilhos independentes para monitoramento de SLA e fechamento de ciclos, permitindo que cada micro-processo seja escalado ou corrigido sem afetar o fluxo principal de geração de documentos.
 
 
+###Autor
+
+Thiago Souza
+
+Power Platform | Dynamics 365 | Automação de Processos
+
+![Visualizações](https://komarev.com/ghpvc/?username=thiagoss96-atv11&label=ACESSOS&color=0078d4&style=flat)
 
 
 
