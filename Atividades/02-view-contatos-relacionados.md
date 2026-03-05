@@ -1,3 +1,4 @@
+![Visualizações](https://komarev.com/ghpvc/?username=thiagoss96-atv02&label=ACESSOS&color=0078d4&style=flat)
 # 02 - View de Contatos Relacionados
 
 ## Objetivo
