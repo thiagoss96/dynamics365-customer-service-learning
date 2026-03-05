@@ -1,3 +1,4 @@
+![Visualizações](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fthiagoss96%2Fdynamics365-customer-service-learning%2Fblob%2Fmain%2FAtividades%2F01-fluxo-Power-Automate-Consulta-Agenda-relatorio.md&count_bg=%230078D4&title_bg=%23555555&icon=microsoftdynamics365.svg&icon_color=%23E7E7E7&title=Acessos%20nesta%20Atividade&edge_flat=false)
 ## Fluxo: Consulta de Reuniões e Exportação para Excel (Power Automate)
 
 # Visão Geral
