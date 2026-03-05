@@ -128,11 +128,12 @@ Após criar a ocorrência com sucesso, o fluxo executa uma atualização no regi
 * **Ação:** Atualizar uma linha.
 * **Alteração:** O campo `Status da Linha` é alterado para **"Em Processo" (Value 2)**. 
 * **Objetivo:** Isso garante a integridade do processo, impedindo que o mesmo registro seja processado novamente na próxima execução do job.
+
 ### Fluxo II: Gatilho de Fechamento (State Machine)
-Job automático que após a resolução de um chamado, verifica se a ocorrência criada pelo gatilho possui o guid da remessa salvo no campo: dyn_ordemderemessa da tabela OcorrÊncia, se sim, ela irá atualizar o status da linha da Remessa que teve seu chamado encerrado com status: Concluída.
+Job automático que após a resolução de um chamado, verifica se a ocorrência criada pelo gatilho possui o guid da remessa salvo no campo: dyn_ordemderemessa da tabela Ocorrência, se sim, ela irá atualizar o status da linha da Remessa que teve seu chamado encerrado com status: Concluída.
 Verifica a resolução de pendências externas para encerrar o ciclo de vida do registro pai.
 * **OData Query:** `statecode eq 1 and _dyn_ordemderemessa_value ne null`
-* **Atualizar uma linha da table Ordem remessa):**
+* **Atualizar uma linha da table Ordem remessa):** O campo `Status da Linha` é alterado para **"Concluído" (Value 3)**
   ** fim
   
 ##  4. Engine de Geração de Documentos Dinâmicos (Template Engine & Token Replacement)
