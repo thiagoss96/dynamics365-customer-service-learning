@@ -32,6 +32,7 @@ Cada atividade foi construída com foco em **entender profundamente o funcioname
 | 08 | Exportar reuniões diárias do Outlook para Excel| Utilizando Power Automate e Outlook. |
 | 09 | Criação de Contas para marketing| Automação de Criação de Contatos a partir dos campos Email 2 e Email 3. |
 | 10 | Alteração na Ribbon Dynamics 365|  Como realizar remoção, ocultar e mover botões na ribbon do Dynamics 365. |
+| 11 | Gestão de Remessas Fracionadas no Dynamics 365|  Desenvolvimento de módulo para planejamento de entregas e cronogramas logísticos dentro do fluxo de vendas (Quotes).|
 
 ---
 
@@ -47,26 +48,28 @@ Cada atividade foi construída com foco em **entender profundamente o funcioname
 
 ## 💡 Principais Aprendizados
 
-- Estrutura e relacionamento de entidades no Dataverse  
-- Customizações funcionais em formulários, campos e views  
-- Uso do Power Automate para integração entre Dynamics e outros serviços Microsoft  
-- Geração de indicadores com Power BI conectando dados do Dataverse  
-- Aplicação prática de consultas FetchXML e ferramentas do XrmToolBox  
+* **Arquitetura de Dados Avançada:** Modelagem de relacionamentos N:1 no Dataverse para suporte a processos de logística fracionada, garantindo a integridade referencial entre Cotações e múltiplas Ordens de Remessa.
+* **Automação Proativa (Watchdog):** Desenvolvimento de fluxos recorrentes no Power Automate para monitoramento de SLAs, utilizando filtragem OData no lado do servidor (Server-side) para otimização de performance.
+* **Manipulação Dinâmica de Documentos:** Criação de um motor de renderização de termos contratuais via HTML/CSS, utilizando lógica de "Token Replacement" e funções avançadas de string para composição de tabelas dinâmicas.
+* **Tratamento Lógico de Dados:** Aplicação de funções defensivas (`coalesce`, `if(empty)`, `convertTimeZone`) para garantir a resiliência dos fluxos de trabalho e a precisão regional de datas.
+* **Ferramentas de Ecossistema:** Uso prático do XrmToolBox para tunagem de consultas e FetchXML, além de customizações avançadas em formulários e views para melhorar a experiência do usuário (UX).
+* **Data Insights:** Conexão e tratamento de dados do Dataverse para geração de indicadores de performance de entregas e saldos de remessa.
 
 ---
 
 ## 🎯 Próximos Passos
 
-- Implementar automações mais complexas entre Dynamics 365 e Power BI  
-- Criar fluxos para análise de SLA e métricas de atendimento  
-- Explorar o uso do **Copilot Studio** em cenários de Customer Service  
-- Aprofundar a personalização de formulários com **Power Apps Component Framework (PCF)**
+* Implementar automações mais complexas entre Dynamics 365 e Power BI.
+* Criar fluxos para análise de SLA e métricas de atendimento.
+* Explorar o uso do **Copilot Studio** em cenários de Customer Service.
+* Aprofundar a personalização de formulários com **Power Apps Component Framework (PCF)**.
+* **Evolução do Módulo de Remessas:** Implementar um painel de controle de saldo dinâmico (Consumido vs. Provisionado) e integração com APIs de rastreio logístico para atualização automática do status das REMs.
 
 ---
 
 ## 👨‍💻 Sobre Mim
 
-Sou profissional de tecnologia com experiência em **Dynamics 365 CRM e Power Platform**, com foco em **automação, análise de dados e experiência do cliente**.  
+Sou profissional de tecnologia com experiência em **Dynamics 365 CRM e Power Platform**, com foco em ** desenvolvimento, automação, análise de dados e experiência do cliente**.  
 Atualmente, aplico meus conhecimentos na construção de soluções funcionais e fluxos inteligentes dentro do ecossistema Microsoft, buscando unir **simplicidade e eficiência** em cada entrega.
 
 📧 **thiagosoaresdesouza96@outlook.com**  
