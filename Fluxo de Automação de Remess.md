@@ -1,33 +1,34 @@
 ```mermaid
-graph LR
-    %% Direção Inicial: Horizontal
+graph TD
+    %% Agora o fluxo desce, ganhando mais espaço lateral para as caixas
     
     Start([Criação da Remessa]) --> Fin[Gerar Ocorrência: Fila Finanças]
     Fin --> Dec1{Análise Financeira}
 
-    %% Ramificações
+    %% Ramificações saindo para os lados e descendo
     Dec1 -- Reprovado --> StatusRep[Status: Crédito Reprovado]
     Dec1 -- Aprovado --> StatusApr[Status: Crédito Aprovado]
 
-    %% A curva para a decisão de Prazo
+    %% Encontro no Prazo Limite
     StatusApr --> Prazo{Chegou o Prazo Limite?}
     StatusRep --> Prazo
 
-    %% Filtro de Segurança
+    %% Filtro de Segurança (O pulo do gato)
     Prazo -- Sim --> ValidaStatus{O Status é <br/>'Crédito Aprovado'?}
     Prazo -- Não --> Aguarda[Aguardar Data]
 
-    %% Decisão Final
+    %% Decisão de Fulfillment
     ValidaStatus -- Sim --> Full[Gerar Ocorrência: Fila Fulfillment]
-    ValidaStatus -- Não --> NoFull[Processo Encerrado: <br/>Sem Envio de Mercadoria]
+    ValidaStatus -- Não --> NoFull[Processo Encerrado: <br/>Sem envio por falta de crédito]
 
+    %% Fase Final de Logística
     Full --> StatusProc[Status: Em Processo de Entrega]
-    StatusProc --> Dec2{Análise de Entrega}
+    StatusProc --> Dec2{Entrega Realizada?}
     
     Dec2 -- Sucesso --> StatusOK[Status: Entregue]
     Dec2 -- Falha --> StatusFail[Status: Não Entregue]
 
-    %% Estilização (O seu Front-end)
+    %% Estilização (Mantendo o front-end)
     classDef finance fill:#e1f5fe,stroke:#01579b,color:#01579b
     classDef logistics fill:#f3e5f5,stroke:#4a148c,color:#4a148c
     classDef success fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
