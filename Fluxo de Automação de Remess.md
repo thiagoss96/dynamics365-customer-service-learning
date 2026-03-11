@@ -1,24 +1,23 @@
+```mermaid
 graph LR
-    %% Direção Inicial: Horizontal (LR)
+    %% Direção Inicial: Horizontal
     
     Start([Criação da Remessa]) --> Fin[Gerar Ocorrência: Fila Finanças]
     Fin --> Dec1{Análise Financeira}
 
-    %% Se reprovado, desce para o "Fim" (Vertical)
+    %% Ramificações
     Dec1 -- Reprovado --> StatusRep[Status: Crédito Reprovado]
-    
-    %% Se aprovado, segue horizontal
     Dec1 -- Aprovado --> StatusApr[Status: Crédito Aprovado]
 
-    %% O Fluxo "Sobe" para a análise de Prazo (Vertical)
+    %% A curva para a decisão de Prazo
     StatusApr --> Prazo{Chegou o Prazo Limite?}
     StatusRep --> Prazo
 
-    %% A decisão do Prazo Limite desce para a Verificação de Status
+    %% Filtro de Segurança
     Prazo -- Sim --> ValidaStatus{O Status é <br/>'Crédito Aprovado'?}
     Prazo -- Não --> Aguarda[Aguardar Data]
 
-    %% Lógica Final: Desce para o fechamento
+    %% Decisão Final
     ValidaStatus -- Sim --> Full[Gerar Ocorrência: Fila Fulfillment]
     ValidaStatus -- Não --> NoFull[Processo Encerrado: <br/>Sem Envio de Mercadoria]
 
@@ -28,7 +27,7 @@ graph LR
     Dec2 -- Sucesso --> StatusOK[Status: Entregue]
     Dec2 -- Falha --> StatusFail[Status: Não Entregue]
 
-    %% Estilização do "Front-end"
+    %% Estilização (O seu Front-end)
     classDef finance fill:#e1f5fe,stroke:#01579b,color:#01579b
     classDef logistics fill:#f3e5f5,stroke:#4a148c,color:#4a148c
     classDef success fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
