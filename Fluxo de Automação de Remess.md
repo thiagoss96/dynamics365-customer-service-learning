@@ -1,34 +1,34 @@
 ```mermaid
-graph TD
-    %% Agora o fluxo desce, ganhando mais espaço lateral para as caixas
-    
-    Start([Criação da Remessa]) --> Fin[Gerar Ocorrência: Fila Finanças]
-    Fin --> Dec1{Análise Financeira}
+graph LR
+    %% Organização em Subgrafos para não achatar
+    subgraph SETOR_FINANCEIRO [Processo de Crédito]
+        Start([Criação da Remessa]) --> Fin[Gerar Ocorrência:<br/>Fila Finanças]
+        Fin --> Dec1{Análise<br/>Financeira}
+        Dec1 -- Reprovado --> StatusRep[Status:<br/>Fin. Reprovado]
+        Dec1 -- Aprovado --> StatusApr[Status:<br/>Fin. Aprovado]
+    end
 
-    %% Ramificações saindo para os lados e descendo
-    Dec1 -- Reprovado --> StatusRep[Status: Crédito Reprovado]
-    Dec1 -- Aprovado --> StatusApr[Status: Crédito Aprovado]
-
-    %% Encontro no Prazo Limite
-    StatusApr --> Prazo{Chegou o Prazo Limite?}
+    %% Transição para o Meio
+    StatusApr --> Prazo
     StatusRep --> Prazo
 
-    %% Filtro de Segurança (O pulo do gato)
-    Prazo -- Sim --> ValidaStatus{O Status é <br/>'Crédito Aprovado'?}
-    Prazo -- Não --> Aguarda[Aguardar Data]
+    subgraph MOTOR_DECISAO [Inteligência de Prazo e Status]
+        Prazo{Chegou o<br/>Prazo Limite?} -- Sim --> ValidaStatus{O Status é<br/>'Fin. Aprovado'?}
+        Prazo -- Não --> Aguarda[Aguardar Data]
+        ValidaStatus -- Não --> NoFull[Fim: Bloqueio<br/>Financeiro]
+    end
 
-    %% Decisão de Fulfillment
-    ValidaStatus -- Sim --> Full[Gerar Ocorrência: Fila Fulfillment]
-    ValidaStatus -- Não --> NoFull[Processo Encerrado: <br/>Sem envio por falta de crédito]
+    %% Transição para Logística
+    ValidaStatus -- Sim --> Full
 
-    %% Fase Final de Logística
-    Full --> StatusProc[Status: Em Processo de Entrega]
-    StatusProc --> Dec2{Entrega Realizada?}
-    
-    Dec2 -- Sucesso --> StatusOK[Status: Entregue]
-    Dec2 -- Falha --> StatusFail[Status: Não Entregue]
+    subgraph SETOR_LOGISTICO [Fulfillment e Entrega]
+        Full[Gerar Ocorrência:<br/>Fila Entrega] --> StatusProc[Status: Em<br/>Processo de Entrega]
+        StatusProc --> Dec2{Entrega<br/>Realizada?}
+        Dec2 -- Sucesso --> StatusOK[Status:<br/>Entregue]
+        Dec2 -- Falha --> StatusFail[Status:<br/>Não Entregue]
+    end
 
-    %% Estilização (Mantendo o front-end)
+    %% Estilização Técnica
     classDef finance fill:#e1f5fe,stroke:#01579b,color:#01579b
     classDef logistics fill:#f3e5f5,stroke:#4a148c,color:#4a148c
     classDef success fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
